@@ -179,15 +179,15 @@ body {
 .site-nav .link {
     position: relative;
     display: block;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 7px;
+    padding-bottom: 7px;
     color: var(--title-text-color);  
     transition: color 250ms c;
 }
 
 .site-nav .link.current::after {
     position: absolute;
-    top: 53px;
+    top: 52px;
     content: "";
     display: block;
     width: 100%;
@@ -210,8 +210,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 7px;
+    padding-bottom: 7px;
     transition: color 250ms var(--primary-timing-function);
 }
 
@@ -343,6 +343,10 @@ body {
     justify-content: space-between;
 }
 
+.essential .images-list-item {
+    position: relative;
+}
+
 .essential .essential-text {
     margin: 0;
     text-align: center;
@@ -350,6 +354,8 @@ body {
 }
 
 .essential .essential-text-container {
+    position: absolute;
+   bottom: 0;
     width: 370px;
     height: 70px;
     padding-top: 27px;
@@ -569,9 +575,66 @@ body {
 
 
 
+/*===== МОДАЛЬНЕ ВІКНО =====*/
 
 
-/*=====ПОРТФОЛІО=====*/
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: opacity 250ms var(--primary-timing-function),
+              visibility 250ms var(--primary-timing-function);
+}
+
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    visibility: 0;
+
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 528px;
+    height: 581px;
+    background-color: var(--secondary-accent-color);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+     
+}
+
+.close-icon-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: var(--secondary-accent-color);
+    cursor: pointer;
+}
+    
+
+
+
+
+
+
+
+
+
+/*===== ПОРТФОЛІО =====*/
 
 
 .portfolio .buttons {
@@ -592,7 +655,10 @@ body {
     border-radius: 4px;
     border: 0;
     cursor: pointer;
-    padding: 6px 22px;     
+    padding: 6px 22px;    
+    transition: background-color 250ms var(--primary-timing-function),
+                color 250ms var(--primary-timing-function),
+                box-shadow 250ms var(--primary-timing-function); 
 }
 
 .buttons .button-all {
@@ -617,7 +683,7 @@ body {
 
 .buttons .port-btn:hover,
 .buttons .port-btn:focus {
-    background: var(--accent-color);
+    background-color: var(--accent-color);
     color: var(--secondary-accent-color);
     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
 }
@@ -638,10 +704,50 @@ body {
     /*outline: 2px solid teal;*/
 }
 
+.position-text-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.position-text-container::before {
+    content: "";
+    background: rgba(33, 150, 243, 0.9);
+}
+
+.position-text {
+    padding: 63px 24px 63px 24px;
+    margin: 0;
+    color: var(--secondary-accent-color);
+    font-size: 18px;
+    line-height: 1.56;
+}
+
+.position-text-container::before,
+.position-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%);
+    transition: transform 250ms var(--primary-timing-function);
+    
+}
+
+.port-link {
+    transition: box-shadow 250ms var(--primary-timing-function);
+}
+
 .port-link:hover,
 .port-link:focus {
     display: block;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+.port-link:hover .position-text-container::before,
+.port-link:hover .position-text {
+    transform: translateY(0);
 }
 
 .port-wrapper {
