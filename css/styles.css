@@ -585,8 +585,8 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.2);
-    transition: opacity 250ms var(--primary-timing-function),
-              visibility 250ms var(--primary-timing-function);
+    transition: opacity 500ms var(--primary-timing-function),
+              visibility 500ms var(--primary-timing-function);
 }
 
 .backdrop.is-hidden {
